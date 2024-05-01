@@ -1,3 +1,5 @@
+mod fletch;
+use fletch::{HttpCtx, HttpState};
 use anyhow::{anyhow, bail, Result};
 use std::{
     fmt::Debug,
@@ -236,6 +238,18 @@ impl QuickJS {
                 Ok(())
             },
         )?;
+
+        let allowed_domains = Some(vec!["https://postman-echo.com".to_string()]);
+        let max_concurrent_requests = Some(42);
+    
+        let http_ctx = HttpCtx {
+            allowed_hosts: allowed_domains,
+            max_concurrent_requests,
+        };
+    
+        let http_state = HttpState::new().unwrap();
+    
+        http_state.add_to_linker(&mut linker, move |_| http_ctx.clone())?;
 
         linker.module(&mut store, "", &self.module)?;
 

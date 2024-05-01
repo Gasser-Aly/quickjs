@@ -8,6 +8,7 @@ extern "C" {
     fn get_data(ptr: i32);
     fn get_data_size() -> i32;
     fn set_output(ptr: i32, size: i32, error: i32);
+    // fn fletch(ptr: i32, size: i32, error: i32);
 }
 
 /// Transcodes a byte slice containing a JSON encoded payload into a [`JSValueRef`].

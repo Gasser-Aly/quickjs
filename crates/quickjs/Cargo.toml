@@ -5,6 +5,15 @@ edition = "2021"
 
 [dependencies]
 anyhow = { workspace = true }
+bytes = "1.6.0"
+futures = "0.3.30"
+http = "1.1.0"
+reqwest = { version = "0.12.4", features = ["blocking"]}
+thiserror = "1.0.59"
+tokio = "1.37.0"
+tracing = "0.1.40"
+tracing-subscriber = "0.3.18"
+url = "2.5.0"
 wasi-common = "17.0.0"
 wasmtime = "17.0.0"
 wasmtime-wasi = "17.0.0"
